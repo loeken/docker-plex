@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: spritsail/plex-media-server
+          ref: refs/heads/master
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
