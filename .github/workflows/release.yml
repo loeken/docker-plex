@@ -10,6 +10,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: spritsail/plex-media-server.git
+          branch: master
      
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
