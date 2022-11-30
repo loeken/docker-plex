@@ -20,6 +20,13 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: loeken/plex:1.29.2.6364,loeken/plex:latest
+          context: ./ha
+          no-cache: true
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         env:
@@ -35,10 +42,3 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: loeken/plex:1.29.2.6364,loeken/plex:latest
-          context: ./ha
-          no-cache: true
