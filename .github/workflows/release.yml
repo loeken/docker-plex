@@ -11,6 +11,8 @@ jobs:
         with:
           repository: spritsail/plex-media-server
           ref: refs/heads/master
+      - name: patch dockerfile
+        run: sed -i 's/FROM scratch/FROM alpine:3.17/g' Dockerfile
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
