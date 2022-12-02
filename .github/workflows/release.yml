@@ -34,7 +34,6 @@ jobs:
           push: true
           tags: loeken/plex:1.29.2.6364,loeken/plex:latest
           context: ./plex
-          no-cache: true
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         env:
