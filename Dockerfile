@@ -347,7 +347,7 @@ RUN mv /lib /lib_temp
 COPY --from=combine "/output" /
 
 
-ENV SUID=900 SGID=900 \
+ENV SUID=589 SGID=589 \
     PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS="6" \
     PLEX_MEDIA_SERVER_MAX_STACK_SIZE="3000" \
     PLEX_MEDIA_SERVER_TMPDIR="/tmp" \
@@ -364,6 +364,7 @@ VOLUME ["/config", "/transcode"]
 RUN mkdir /config
 RUN mkdir -p "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR" \
  && ln -sfv /config "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR/Plex Media Server"
+
 
 ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["/usr/bin/entrypoint"]
