@@ -347,7 +347,7 @@ RUN mv /lib /lib_temp
 COPY --from=combine "/output" /
 
 
-ENV SUID=589 SGID=589 \
+ENV SUID=0 SGID=0 \
     PLEX_MEDIA_SERVER_MAX_PLUGIN_PROCS="6" \
     PLEX_MEDIA_SERVER_MAX_STACK_SIZE="3000" \
     PLEX_MEDIA_SERVER_TMPDIR="/tmp" \
