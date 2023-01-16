@@ -2,6 +2,8 @@ name: release
 on:
   push:
     branches: [ main ]
+env:
+  version: 1.30.1.6562
 jobs:
   release:
     runs-on: ubuntu-22.04
@@ -12,13 +14,6 @@ jobs:
           repository: spritsail/plex-media-server
           ref: refs/heads/master
           path: plex
-      - name: Check out my other private repo
-        uses: actions/checkout@master
-        with:
-          repository: loeken/docker-plex
-          path: docker-plex
-      - name: patch dockerfile
-        run: cp docker-plex/Dockerfile plex/Dockerfile
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -32,18 +27,18 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: loeken/plex:1.29.2.6364,loeken/plex:latest
+          tags: loeken/plex:${{ env.version }},loeken/plex:latest
           context: ./plex
       - name: Run Snyk to check Docker image for vulnerabilities
         uses: snyk/actions/docker@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          image: loeken/plex:1.29.2.6364
+          image: loeken/plex:${{ env.version }}
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: loeken/plex:1.29.2.6364
+          image-ref: loeken/plex:${{ env.version }}
           format: 'table'
           exit-code: '1'
           ignore-unfixed: true
