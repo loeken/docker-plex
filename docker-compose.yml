@@ -1,0 +1,18 @@
+services:
+  docker-plex:
+    container_name: docker-plex
+    build:
+      context: .
+      dockerfile: ./deploy/docker/Dockerfile.dev
+    restart: "no"
+    env_file: .env
+    networks:
+      - docker-plex-network
+    volumes:
+      - ${HOME}/.config/gh:/home/vscode/.config/gh
+      - ${HOME}/.ssh:/home/vscode/.ssh
+      - ${HOME}/.zhistory:/home/vscode/.zhistory
+# Networks to be created to facilitate communication between containers
+networks:
+  docker-plex-network:
+    driver: bridge

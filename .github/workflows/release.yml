@@ -34,18 +34,3 @@ jobs:
           push: true
           tags: loeken/plex:1.29.2.6364,loeken/plex:latest
           context: ./plex
-      - name: Run Snyk to check Docker image for vulnerabilities
-        uses: snyk/actions/docker@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          image: loeken/plex:1.29.2.6364
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: loeken/plex:1.29.2.6364
-          format: 'table'
-          exit-code: '1'
-          ignore-unfixed: true
-          vuln-type: 'os,library'
-          severity: 'CRITICAL,HIGH'

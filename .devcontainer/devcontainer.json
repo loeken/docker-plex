@@ -1,0 +1,14 @@
+{
+    "name": "docker-plex",
+    "dockerComposeFile": "../docker-compose.yml",
+    "service": "docker-plex",
+    "workspaceFolder": "/app",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "oderwat.indent-rainbow",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    }
+}
