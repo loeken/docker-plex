@@ -17,7 +17,7 @@ ARG LDFLAGS="$CFLAGS -Wl,-O1,--sort-common,--as-needed,-z,relro,-z,now"
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-FROM spritsail/alpine:3.16 AS builder
+FROM spritsail/alpine:3.21@sha256:275d6650dc011282fc33b3751e55fa07a08e2b32da50c6f36f2f1febd61c0c16 AS builder
 
 RUN apk add --no-cache \
         autoconf \
