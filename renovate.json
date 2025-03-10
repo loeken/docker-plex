@@ -12,7 +12,7 @@
         "tags:\\s*loeken/plex:(?<currentValue>[\\d\\.]+)",
         "COMMIT_TAG=(?<currentValue>[\\d\\.]+)"
       ],
-      "datasourceTemplate": "github-releases",
+      "datasourceTemplate": "docker",
       "packageNameTemplate": "linuxserver/plex",
       "versioningTemplate": "semver"
     }
