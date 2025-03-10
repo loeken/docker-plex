@@ -1,16 +1,26 @@
 {
-  "extends": ["config:base"],
+  "extends": [
+    "config:recommended"
+  ],
   "packageRules": [
     {
-      "matchDatasources": ["docker"]
+      "matchCategories": [
+        "docker"
+      ],
+      "enabled": true
+    },
+    {
+      "matchDatasources": [
+        "docker"
+      ]
     }
   ],
-  "docker": {
-    "enabled": true
-  },
-  "regexManagers": [
+  "customManagers": [
     {
-      "fileMatch": [".github/workflows/release.yml$"],
+      "customType": "regex",
+      "fileMatch": [
+        ".github/workflows/release.yml$"
+      ],
       "matchStrings": [
         "tags: loeken/plex:(?<currentValue>[\\d\\.\\-a-zA-Z]+)"
       ],
