@@ -12,11 +12,11 @@
     {
       "fileMatch": [".github/workflows/release.yml$"],
       "matchStrings": [
-        "tags: loeken/plex:(?<currentValue>[\\d.]+)"
+        "tags: loeken/plex:(?<currentValue>[\\d\\.\\-a-zA-Z]+)"
       ],
       "datasourceTemplate": "docker",
       "depNameTemplate": "linuxserver/plex",
-      "versioningTemplate": "docker"
+      "versioningTemplate": "semver"
     }
   ]
 }
