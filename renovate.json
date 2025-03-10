@@ -24,8 +24,8 @@
       "matchStrings": [
         "tags: loeken/plex:(?<currentValue>[\\d\\.\\-a-zA-Z]+)"
       ],
-      "datasourceTemplate": "docker",
-      "depNameTemplate": "linuxserver/plex",
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "linuxserver/docker-plex",
       "versioningTemplate": "semver"
     }
   ]
