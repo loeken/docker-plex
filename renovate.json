@@ -1,31 +1,21 @@
 {
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:base"],
   "packageRules": [
     {
-      "matchCategories": [
-        "docker"
-      ],
-      "enabled": true
-    },
-    {
-      "matchDatasources": [
-        "docker"
-      ]
+      "matchDatasources": ["docker"]
     }
   ],
-  "customManagers": [
+  "docker": {
+    "enabled": true
+  },
+  "regexManagers": [
     {
-      "customType": "regex",
-      "fileMatch": [
-        ".github/workflows/release.yml$"
-      ],
+      "fileMatch": [".github/workflows/release.yml$"],
       "matchStrings": [
         "tags: loeken/plex:(?<currentValue>[\\d\\.\\-a-zA-Z]+)"
       ],
-      "datasourceTemplate": "github-releases",
-      "depNameTemplate": "linuxserver/docker-plex",
+      "datasourceTemplate": "docker",
+      "depNameTemplate": "linuxserver/plex",
       "versioningTemplate": "semver"
     }
   ]
